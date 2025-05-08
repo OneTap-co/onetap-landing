@@ -8,12 +8,41 @@
 </head>
 <body>
   <div class="container">
-    <h1>OneTap</h1>
-    <p>Checkout with a Single Tap. Launching Soon!</p>
-    <form action="https://formspree.io/f/yourFormID" method="POST">
-      <input type="email" name="email" placeholder="Your email" required />
-      <button type="submit">Notify Me</button>
-    </form>
+  <h1>OneTap</h1>
+  <p>Checkout with a Single Tap. Launching Soon!</p>
+
+  <!-- 1. Embed your Loom demo -->
+  <div class="demo">
+    <iframe
+      src="https://www.loom.com/embed/YOUR-LOOM-ID"
+      frameborder="0"
+      allowfullscreen
+      style="width:100%; height:315px;"
+    ></iframe>
   </div>
+
+  <!-- 2. Link to your live prototype -->
+  <p style="text-align:center; margin-top:1rem;">
+    <a
+      href="https://codesandbox.io/s/YOUR-SANDBOX-ID"
+      target="_blank"
+      class="btn"
+    >
+      ▶️ Try the live prototype
+    </a>
+  </p>
+
+  <!-- 3. Your existing waitlist form -->
+  <form action="https://your-form-endpoint" method="POST">
+    <input
+      type="email"
+      name="email"
+      placeholder="Your email"
+      required
+    />
+    <button type="submit">Notify Me</button>
+  </form>
+</div>
+
 </body>
 </html>
