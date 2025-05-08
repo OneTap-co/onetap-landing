@@ -1,12 +1,190 @@
-body, html {
-  height: 100%;
-  margin: 0;
-  font-family: sans-serif;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f5f5f5;
+/* styles.css */
+:root {
+  --bg: #000;
+  --fg: #fff;
+  --muted-bg: #111;
+  --transition: 0.3s ease;
+  --font-sans: 'Open Sans', sans-serif;
+  --font-heading: 'Montserrat', sans-serif;
 }
-.container { text-align: center; }
-input { padding: 0.5em; margin-right: 0.5em; }
-button { padding: 0.5em 1em; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg);
+  z-index: 100;
+}
+.logo {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--fg);
+  text-decoration: none;
+}
+.menu a {
+  margin-left: 2rem;
+  font-size: 1rem;
+  color: var(--fg);
+  text-decoration: none;
+  transition: opacity var(--transition);
+}
+.menu a:hover {
+  opacity: 0.7;
+}
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 0 2rem;
+}
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  max-width: 800px;
+}
+.hero p {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  margin: 1.5rem 0 2rem;
+  opacity: 0.8;
+  max-width: 600px;
+}
+.btn-primary {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  padding: 0.75rem 2rem;
+  border: 2px solid var(--fg);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--fg);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--transition), color var(--transition), transform var(--transition);
+}
+.btn-primary:hover {
+  background: var(--fg);
+  color: var(--bg);
+  transform: scale(1.05);
+}
+.section {
+  padding: 6rem 2rem;
+}
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.feature {
+  background: var(--muted-bg);
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.6s forwards;
+}
+.feature:nth-child(1) {
+  animation-delay: 0.2s;
+}
+.feature:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.feature:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.feature:nth-child(4) {
+  animation-delay: 0.8s;
+}
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.feature h3 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+.feature p {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+.contact {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+}
+.contact h2 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+.contact p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  opacity: 0.9;
+}
+.contact form {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.contact input {
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--fg);
+  border-radius: 30px;
+  background: transparent;
+  color: var(--fg);
+  font-size: 1rem;
+  min-width: 280px;
+}
+.contact input::placeholder {
+  color: var(--fg);
+  opacity: 0.6;
+}
+.contact button {
+  border-radius: 30px;
+}
+footer {
+  background: var(--bg);
+  color: var(--fg);
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  margin-top: 4rem;
+}
+footer a {
+  color: var(--fg);
+  opacity: 0.8;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+footer a:hover {
+  opacity: 1;
+}
