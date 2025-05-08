@@ -162,16 +162,15 @@
       transition: opacity var(--transition);
     }
     footer a:hover { opacity: 1; }
-    /* Make contact email stand out with accent color */
+    /* Highlight contact email in orange */
     .contact a {
       color: #FF962C;
-      text-decoration: none;
       font-weight: 600;
+      text-decoration: none;
     }
     .contact a:hover {
       text-decoration: underline;
     }
-    footer a:hover { opacity: 1; }
   </style>
 </head>
 <body>
@@ -195,6 +194,22 @@
       <p style="font-size: 1.125rem;">
         We’re hard at work building OneTap’s core features. Stay tuned for Instant Autofill, Unified Dashboard, Secure Checkout, and Cross-Platform support—all in one tap.
       </p>
+    </div>
+  </section>
+
+  <!-- Demo Section -->
+  <section id="demo" class="demo section" style="padding: 4rem 2rem; background: var(--muted-bg); text-align: center;">
+    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Live Demo</h2>
+    <p style="margin-bottom: 1.5rem; opacity: 0.8;">Try out OneTap in this interactive playground:</p>
+    <div style="width: 100%; max-width: 800px; margin: 0 auto;">
+      <!-- Embed your CodeSandbox demo here -->
+      <iframe
+        src="https://codesandbox.io/embed/devbox/intelligent-monad-xk79f5?file=/index.html&workspaceId=ws_PorJdWwdB9s9yuQNPWtrk5&fontsize=14&hidenavigation=1&theme=dark"
+        style="width:100%; height:500px; border:0; border-radius: 8px; overflow:hidden;"
+        title="OneTap Demo"
+        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
+        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      ></iframe>
     </div>
   </section>
 
