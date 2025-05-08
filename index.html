@@ -5,35 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>OneTap: Universal One-Click Checkout and Purchase Management</title>
   <style>
-    /* Black & White Color Scheme */
+    /* Black & White Color Scheme + Accent */
     :root {
-      --bg-color: #000000;
-      --text-color: #FFFFFF;
-      --muted-bg: #111111;
-      --btn-bg: #FFFFFF;
-      --btn-text: #000000;
-      --border-color: #333333;
+      --bg-color: #000;
+      --text-color: #fff;
+      --muted-bg: #111;
+      --accent: #FF962C;
+      --border-color: #333;
       --transition: 0.3s ease;
       --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    *, *::before, *::after { box-sizing: border-box; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      margin: 0;
       background: var(--bg-color);
       color: var(--text-color);
       font-family: var(--font-sans);
       line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
     }
     nav {
-      position: sticky;
-      top: 0;
+      position: sticky; top: 0;
       background: var(--bg-color);
       padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: flex; justify-content: space-between; align-items: center;
       border-bottom: 1px solid var(--border-color);
       z-index: 10;
     }
@@ -53,7 +47,6 @@
     .menu a:hover { opacity: 0.7; }
 
     .hero {
-      background: var(--bg-color);
       text-align: center;
       padding: 100px 20px;
     }
@@ -66,20 +59,20 @@
       margin-bottom: 2rem;
     }
     .btn-primary {
-      background: var(--btn-bg);
-      color: var(--btn-text);
-      padding: 0.75rem 2rem;
+      background: transparent;
+      color: var(--text-color);
       border: 2px solid var(--text-color);
+      padding: 0.75rem 2rem;
       border-radius: 24px;
       font-size: 1rem;
       cursor: pointer;
+      transition: background var(--transition), transform var(--transition);
       text-decoration: none;
-      transition: transform var(--transition), background var(--transition);
+      display: inline-block;
     }
     .btn-primary:hover {
+      background: var(--accent);
       transform: scale(1.05);
-      background: var(--text-color);
-      color: var(--bg-color);
     }
 
     .features {
@@ -101,8 +94,9 @@
       transform: translateY(-5px);
     }
     .feature h3 {
-      margin-top: 0;
       color: var(--text-color);
+      margin-bottom: 0.75rem;
+      font-size: 1.5rem;
     }
     .feature p {
       color: var(--text-color);
@@ -110,29 +104,59 @@
       font-size: 0.95rem;
     }
 
+    /* Demo Section */
+    .demo {
+      background: var(--muted-bg);
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    .demo h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .demo p {
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+    }
+    .demo video {
+      max-width: 800px;
+      width: 100%;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+    }
+    .demo iframe {
+      width: 100%;
+      max-width: 800px;
+      height: 500px;
+      border: 0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
     .contact {
       background: var(--muted-bg);
-      padding: 3rem 1rem;
       text-align: center;
+      padding: 3rem 1rem;
       margin: 3rem 0;
     }
     .contact h2 {
-      margin-bottom: 1rem;
       font-size: 2rem;
-      color: var(--text-color);
+      margin-bottom: 1rem;
     }
     .contact p {
-      margin-bottom: 1.5rem;
-      color: var(--text-color);
       opacity: 0.9;
+      margin-bottom: 1.5rem;
     }
-    .contact form {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
+    /* Orange accent on email link */
+    .contact a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
     }
-    .contact input[type="email"] {
+    .contact a:hover {
+      text-decoration: underline;
+    }
+    .contact input {
       padding: 0.75rem 1rem;
       border: 1px solid var(--border-color);
       border-radius: 24px;
@@ -140,15 +164,13 @@
       color: var(--text-color);
       min-width: 280px;
       font-size: 1rem;
+      margin-right: 0.5rem;
     }
-    .contact input::placeholder {
-      color: var(--text-color);
-      opacity: 0.6;
+    .contact button {
+      background: transparent;
     }
 
     footer {
-      background: var(--bg-color);
-      color: var(--text-color);
       text-align: center;
       padding: 1.5rem 1rem;
       font-size: 0.9rem;
@@ -162,15 +184,6 @@
       transition: opacity var(--transition);
     }
     footer a:hover { opacity: 1; }
-    /* Highlight contact email in orange */
-    .contact a {
-      color: #FF962C;
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .contact a:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
@@ -197,20 +210,19 @@
     </div>
   </section>
 
-  <!-- Demo Section -->
-  <section id="demo" class="demo section" style="padding: 4rem 2rem; background: var(--muted-bg); text-align: center;">
-    <h2 style="font-size: 2rem; margin-bottom: 1rem;">Live Demo</h2>
-    <p style="margin-bottom: 1.5rem; opacity: 0.8;">Try out OneTap in this interactive playground:</p>
-    <div style="width: 100%; max-width: 800px; margin: 0 auto;">
-      <!-- Embed your CodeSandbox demo here -->
-      <iframe
-        src="https://codesandbox.io/embed/intelligent-monad-xk79f5?view=preview&module=/index.html&fontsize=14&hidenavigation=1&theme=dark"
-        style="width:100%; height:500px; border:0; border-radius: 8px; overflow:hidden;"
-        title="OneTap Demo"
-        allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
-        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-      ></iframe>
-    </div>
+  <section id="demo" class="demo">
+    <h2>See OneTap in Action</h2>
+    <p>Watch this walkthrough, then try it yourself below.</p>
+    <video controls poster="" >
+      <source src="Demo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <p>Or explore the live interactive demo:</p>
+    <iframe
+      src="https://codesandbox.io/embed/intelligent-monad-xk79f5?view=preview&module=/index.html&fontsize=14&hidenavigation=1&theme=dark"
+      title="OneTap Demo"
+      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+    ></iframe>
   </section>
 
   <section id="contact" class="contact">
@@ -228,7 +240,10 @@
 
   <footer>
     <p>&copy; 2025 OneTap. All rights reserved.</p>
-    <p><a href="#privacy">Privacy</a> | <a href="#terms">Terms</a></p>
+    <p>
+      <a href="#privacy">Privacy</a> |
+      <a href="#terms">Terms</a>
+    </p>
   </footer>
 </body>
 </html>
