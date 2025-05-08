@@ -1,38 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>OneTap – Coming Soon</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OneTap: Universal One-Click Checkout and Purchase Management</title>
+  <style>
+    /* Black & White Color Scheme */
+    :root {
+      --bg-color: #000000;
+      --text-color: #FFFFFF;
+      --muted-bg: #111111;
+      --btn-bg: #FFFFFF;
+      --btn-text: #000000;
+      --border-color: #333333;
+      --transition: 0.3s ease;
+      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--bg-color);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      z-index: 10;
+    }
+    .logo {
+      color: var(--text-color);
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .menu a {
+      color: var(--text-color);
+      margin-left: 1.5rem;
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity var(--transition);
+    }
+    .menu a:hover { opacity: 0.7; }
+
+    .hero {
+      background: var(--bg-color);
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .hero h1 {
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+    }
+    .hero p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+    }
+    .btn-primary {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 0.75rem 2rem;
+      border: 2px solid var(--text-color);
+      border-radius: 24px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .btn-primary:hover {
+      transform: scale(1.05);
+      background: var(--text-color);
+      color: var(--bg-color);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 1rem;
+    }
+    .feature {
+      background: var(--muted-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      transition: transform var(--transition);
+    }
+    .feature:hover {
+      transform: translateY(-5px);
+    }
+    .feature h3 {
+      margin-top: 0;
+      color: var(--text-color);
+    }
+    .feature p {
+      color: var(--text-color);
+      opacity: 0.8;
+      font-size: 0.95rem;
+    }
+
+    .contact {
+      background: var(--muted-bg);
+      padding: 3rem 1rem;
+      text-align: center;
+      margin: 3rem 0;
+    }
+    .contact h2 {
+      margin-bottom: 1rem;
+      font-size: 2rem;
+      color: var(--text-color);
+    }
+    .contact p {
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+      opacity: 0.9;
+    }
+    .contact form {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .contact input[type="email"] {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 24px;
+      background: var(--bg-color);
+      color: var(--text-color);
+      min-width: 280px;
+      font-size: 1rem;
+    }
+    .contact input::placeholder {
+      color: var(--text-color);
+      opacity: 0.6;
+    }
+
+    footer {
+      background: var(--bg-color);
+      color: var(--text-color);
+      text-align: center;
+      padding: 1.5rem 1rem;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border-color);
+    }
+    footer a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 0.5rem;
+      opacity: 0.8;
+      transition: opacity var(--transition);
+    }
+    footer a:hover { opacity: 1; }
+  </style>
 </head>
 <body>
- <div class="container">
-  <h1>OneTap</h1>
-  <p>Checkout with one tap. Launching Soon!</p>
+  <nav>
+    <a href="#" class="logo">OneTap</a>
+    <div class="menu">
+      <a href="#features">Features</a>
+      <a href="#contact">Join Waitlist</a>
+    </div>
+  </nav>
 
-  <!-- Embed the .mov you uploaded -->
-  <div class="demo">
-    <video controls style="width:100%; max-width:640px;">
-      <source src="demo.mov" type="video/quicktime">
-      Your browser doesn’t support HTML5 video.
-    </video>
-  </div>
+  <section class="hero">
+    <h1>OneTap: Universal One-Click Checkout and Purchase Management</h1>
+    <p>End cart abandonment with one, secure tap—shop seamlessly every time.</p>
+    <a href="#features" class="btn-primary">Learn More</a>
+  </section>
 
-  <p style="text-align:center; margin-top:1rem;">
-    <a
-      href="https://codesandbox.io/s/YOUR-SANDBOX-ID"
-      target="_blank"
-      class="btn"
-    >
-      ▶️ Try the live prototype
-    </a>
-  </p>
+  <section id="features" class="features">
+    <div class="feature" style="grid-column: 1 / -1; padding: 4rem;">
+      <h3 style="font-size: 2rem; margin-bottom: 1rem;">Features Coming Soon</h3>
+      <p style="font-size: 1.125rem;">
+        We’re hard at work building OneTap’s core features. Stay tuned for Instant Autofill, Unified Dashboard, Secure Checkout, and Cross-Platform support—all in one tap.
+      </p>
+    </div>
+  </section>
 
-  <form action="https://formspree.io/f/your-form-id" method="POST">
-    <input type="email" name="email" placeholder="Your email" required />
-    <button type="submit">Notify Me</button>
-  </form>
-</div>
+  <section id="contact" class="contact">
+    <h2>Join the Waitlist</h2>
+    <p>
+      Questions? Early access? Reach out at
+      <a href="mailto:info@theonetap.co">info@theonetap.co</a>
+      or join our waitlist below.
+    </p>
+    <form action="#" method="post">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <button type="submit" class="btn-primary">Join Waitlist</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 OneTap. All rights reserved.</p>
+    <p><a href="#privacy">Privacy</a> | <a href="#terms">Terms</a></p>
+  </footer>
 </body>
 </html>
