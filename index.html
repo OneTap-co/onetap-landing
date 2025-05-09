@@ -97,13 +97,14 @@
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
-      align-items: flex-start;
+      align-items: center; /* vertical center */
     }
     #demo .demo-frame {
       flex: 2 1 500px;
       min-width: 300px;
     }
     #demo .demo-frame h2 {
+      text-align: center;
       font-size: 2rem;
       margin-bottom: 1rem;
     }
@@ -120,11 +121,6 @@
       padding-left: 2rem;
       opacity: .9;
       line-height: 1.5;
-    }
-    #demo .instructions h2 {
-      font-size: 1.5rem;
-      margin-top: 0;
-      margin-bottom: 1rem;
     }
     #demo .instructions ol {
       list-style-position: inside;
@@ -213,6 +209,7 @@
     </div>
   </section>
 
+  <!-- Updated Demo Section -->
   <section id="demo">
     <div class="demo-frame">
       <h2>OneTap Demo</h2>
@@ -223,13 +220,12 @@
       ></iframe>
     </div>
     <div class="instructions">
-      <h2>How to Try OneTap</h2>
       <ol>
         <li><strong>Create your profile:</strong> enter name, email, phone, payment methods, addresses.</li>
         <li><strong>Go to any checkout page:</strong> click the OneTap button.</li>
         <li><strong>Select card & address:</strong> choose from saved options.</li>
         <li><strong>Click “Pay with OneTap.”</strong> Instant processing.</li>
-        <li><strong>Enjoy frictionless, one tap checkout everywhere!</strong></li>
+        <li>Enjoy frictionless, one tap checkout everywhere!</li>
       </ol>
     </div>
   </section>
