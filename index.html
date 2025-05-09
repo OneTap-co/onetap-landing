@@ -2,187 +2,118 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OneTap: Universal One-Click Checkout and Purchase Management</title>
   <style>
-    /* Black & White Color Scheme + Accent */
     :root {
-      --bg-color: #000;
-      --text-color: #fff;
-      --muted-bg: #111;
+      --bg: #000;
+      --fg: #fff;
+      --muted: #111;
       --accent: #FF962C;
-      --border-color: #333;
-      --transition: 0.3s ease;
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg-color);
-      color: var(--text-color);
-      font-family: var(--font-sans);
-      line-height: 1.6;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font);
       overflow-x: hidden;
+      line-height: 1.6;
     }
     nav {
       position: sticky; top: 0;
-      background: var(--bg-color);
+      background: var(--bg);
       padding: 1rem 2rem;
-      display: flex; justify-content: space-between; align-items: center;
-      border-bottom: 1px solid var(--border-color);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #333;
       z-index: 10;
     }
-    .logo {
-      color: var(--text-color);
-      font-size: 1.5rem;
-      font-weight: bold;
-      text-decoration: none;
+    nav .logo {
+      font-size: 1.5rem; font-weight: bold; text-decoration: none; color: var(--fg);
     }
-    .menu a {
-      color: var(--text-color);
-      margin-left: 1.5rem;
-      text-decoration: none;
-      font-weight: 500;
-      transition: opacity var(--transition);
+    nav .menu a {
+      margin-left: 1.5rem; text-decoration: none; color: var(--fg);
+      transition: opacity .3s;
     }
-    .menu a:hover { opacity: 0.7; }
+    nav .menu a:hover { opacity: .7; }
 
     .hero {
-      text-align: center;
-      padding: 100px 20px;
+      text-align: center; padding: 100px 20px;
     }
-    .hero h1 {
-      font-size: 2.75rem;
-      margin-bottom: 1rem;
-    }
-    .hero p {
-      font-size: 1.125rem;
-      margin-bottom: 2rem;
-    }
+    .hero h1 { font-size: 2.75rem; margin-bottom: 1rem; }
+    .hero p { font-size: 1.125rem; margin-bottom: 2rem; }
     .btn-primary {
-      background: transparent;
-      color: var(--text-color);
-      border: 2px solid var(--text-color);
-      padding: 0.75rem 2rem;
-      border-radius: 24px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: background var(--transition), transform var(--transition);
-      text-decoration: none;
-      display: inline-block;
+      display: inline-block; text-decoration: none;
+      color: var(--fg); border: 2px solid var(--fg);
+      padding: .75rem 2rem; border-radius: 24px;
+      transition: background .3s, transform .3s;
     }
     .btn-primary:hover {
-      background: var(--accent);
-      transform: scale(1.05);
+      background: var(--accent); transform: scale(1.05);
     }
 
     .features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
-      max-width: 1000px;
-      margin: 3rem auto;
-      padding: 0 1rem;
+      grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+      gap: 2rem; max-width: 1000px; margin: 3rem auto; padding: 0 1rem;
     }
     .feature {
-      background: var(--muted-bg);
-      border-radius: 12px;
-      padding: 2rem;
-      text-align: center;
-      transition: transform var(--transition);
+      background: var(--muted); border-radius: 12px; padding: 2rem; text-align: center;
     }
-    .feature:hover {
-      transform: translateY(-5px);
-    }
-    .feature h3 {
-      color: var(--text-color);
-      margin-bottom: 0.75rem;
-      font-size: 1.5rem;
-    }
-    .feature p {
-      color: var(--text-color);
-      opacity: 0.8;
-      font-size: 0.95rem;
-    }
+    .feature h3 { font-size: 1.5rem; margin-bottom: .75rem; }
+    .feature p { opacity: .8; }
 
-    /* Demo Section */
-    .demo {
-      background: var(--muted-bg);
-      text-align: center;
-      padding: 4rem 2rem;
+    /* Demo + Instructions Side-by-Side */
+    #demo {
+      display: flex; flex-wrap: wrap; gap: 2rem;
+      background: var(--muted); padding: 4rem 2rem;
+      max-width: 1200px; margin: 0 auto;
     }
-    .demo h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
+    #demo .instructions {
+      flex: 1 1 280px; max-width: 360px;
     }
-    .demo p {
-      opacity: 0.8;
-      margin-bottom: 1.5rem;
+    #demo .instructions h2 { font-size: 1.75rem; margin-bottom: 1rem; }
+    #demo .instructions ol { opacity: .9; line-height: 1.5; }
+    #demo .instructions li { margin-bottom: .75rem; }
+    #demo .instructions li span.check { color: var(--accent); }
+
+    #demo .demo-frame {
+      flex: 2 1 500px; max-width: 800px;
     }
-    .demo video {
-      max-width: 800px;
-      width: 100%;
-      border-radius: 8px;
-      margin-bottom: 2rem;
-    }
-    .demo iframe {
-      width: 100%;
-      max-width: 800px;
-      height: 500px;
-      border: 0;
-      border-radius: 8px;
-      overflow: hidden;
+    #demo .demo-frame iframe {
+      width: 100%; height: 400px; border: 0;
+      border-radius: 8px; overflow: hidden;
     }
 
     .contact {
-      background: var(--muted-bg);
-      text-align: center;
-      padding: 3rem 1rem;
-      margin: 3rem 0;
+      background: var(--muted); text-align: center;
+      padding: 3rem 1rem; margin: 3rem 0;
     }
-    .contact h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .contact p {
-      opacity: 0.9;
-      margin-bottom: 1.5rem;
-    }
-    /* Orange accent on email link */
-    .contact a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-    }
-    .contact a:hover {
-      text-decoration: underline;
-    }
+    .contact h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .contact p { opacity: .9; margin-bottom: 1.5rem; }
+    .contact a { color: var(--accent); font-weight: 600; text-decoration: none; }
+    .contact a:hover { text-decoration: underline; }
     .contact input {
-      padding: 0.75rem 1rem;
-      border: 1px solid var(--border-color);
-      border-radius: 24px;
-      background: var(--bg-color);
-      color: var(--text-color);
+      padding: .75rem 1rem; margin-right: .5rem;
+      border: 1px solid #333; border-radius: 24px;
+      background: var(--bg); color: var(--fg);
       min-width: 280px;
-      font-size: 1rem;
-      margin-right: 0.5rem;
     }
     .contact button {
-      background: transparent;
+      background: transparent; color: var(--fg);
+      border: 2px solid var(--fg); padding: .75rem 2rem;
+      border-radius: 24px; cursor: pointer;
+      transition: background .3s;
     }
+    .contact button:hover { background: var(--accent); }
 
     footer {
-      text-align: center;
-      padding: 1.5rem 1rem;
-      font-size: 0.9rem;
-      border-top: 1px solid var(--border-color);
+      text-align: center; padding: 1.5rem 1rem;
+      font-size: .9rem; border-top: 1px solid #333;
     }
-    footer a {
-      color: var(--text-color);
-      text-decoration: none;
-      margin: 0 0.5rem;
-      opacity: 0.8;
-      transition: opacity var(--transition);
-    }
+    footer a { color: var(--fg); text-decoration: none; margin: 0 .5rem; opacity: .8; }
     footer a:hover { opacity: 1; }
   </style>
 </head>
@@ -202,54 +133,48 @@
   </section>
 
   <section id="features" class="features">
-    <div class="feature" style="grid-column: 1 / -1; padding: 4rem;">
-      <h3 style="font-size: 2rem; margin-bottom: 1rem;">Features Coming Soon</h3>
-      <p style="font-size: 1.125rem;">
-        We’re hard at work building OneTap’s core features. Stay tuned for Instant Autofill, Unified Dashboard, Secure Checkout, and Cross-Platform support—all in one tap.
-      </p>
+    <div class="feature" style="grid-column:1/-1; padding:4rem;">
+      <h3>Features Coming Soon</h3>
+      <p>Stay tuned for Instant Autofill, Unified Dashboard, Secure Checkout, and Cross-Platform support—all in one tap.</p>
     </div>
   </section>
 
-  <section id="demo" style="background: var(--muted-bg); padding: 4rem 2rem; display: flex; flex-wrap: wrap; gap: 2rem;">
-  <div class="demo-instructions" style="flex:1 1 280px; max-width: 360px; color: var(--text-color);">
-    <h2 style="font-size: 1.75rem; margin-bottom: 1rem;">How to Try OneTap</h2>
-    <ol style="line-height:1.5; opacity:0.9;">
-      <li><strong>Create your profile:</strong> enter name, email, phone, up to 3 payment methods, billing & shipping addresses.</li>
-      <li><strong>Navigate to any checkout page.</strong> Click the OneTap button when it appears.</li>
-      <li><strong>Select your saved card</strong> (e.g., Card Three) and shipping address.</li>
-      <li><strong>Click “Pay with OneTap.”</strong> The order processes instantly.</li>
-      <li><span style="color: var(--accent);">✅ Enjoy frictionless, one-click checkout everywhere!</span></li>
-    </ol>
-  </div>
-  <div class="iframe-container" style="flex:2 1 500px;">
-    <iframe
-      src="https://codesandbox.io/embed/intelligent-monad-xk79f5?embed=1&view=preview&module=/index.html&fontsize=14&hidenavigation=1&theme=dark"
-      title="OneTap Demo"
-      style="width:100%; height:400px; border:0; border-radius:8px; overflow:hidden;"
-      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
-    ></iframe>
-  </div>
-</section>
+  <section id="demo">
+    <div class="instructions">
+      <h2>How to Try OneTap</h2>
+      <ol>
+        <li><strong>Create your profile:</strong> enter name, email, phone, payment methods, billing & shipping addresses.</li>
+        <li><strong>Navigate to any checkout page.</strong> Click the OneTap button when it appears.</li>
+        <li><strong>Select your saved card</strong> and shipping address.</li>
+        <li><strong>Click “Pay with OneTap.”</strong> The order processes instantly.</li>
+        <li><span class="check">✅ Enjoy frictionless, one-click checkout everywhere!</span></li>
+      </ol>
+    </div>
+    <div class="demo-frame">
+      <iframe
+        src="https://codesandbox.io/embed/intelligent-monad-xk79f5?embed=1&view=preview&module=/index.html&fontsize=14&hidenavigation=1&theme=dark"
+        title="OneTap Demo"
+        sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
+      ></iframe>
+    </div>
+  </section>
 
-<section id="contact" class="contact">
+  <section id="contact" class="contact">
     <h2>Join the Waitlist</h2>
     <p>
-      Questions? Early access? Reach out at
+      Questions or early access? Reach out at
       <a href="mailto:info@theonetap.co">info@theonetap.co</a>
       or join our waitlist below.
     </p>
     <form action="#" method="post">
       <input type="email" name="email" placeholder="Your email address" required>
-      <button type="submit" class="btn-primary">Join Waitlist</button>
+      <button type="submit">Join Waitlist</button>
     </form>
   </section>
 
   <footer>
     <p>&copy; 2025 OneTap. All rights reserved.</p>
-    <p>
-      <a href="#privacy">Privacy</a> |
-      <a href="#terms">Terms</a>
-    </p>
+    <p><a href="#privacy">Privacy</a> | <a href="#terms">Terms</a></p>
   </footer>
 </body>
 </html>
