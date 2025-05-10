@@ -21,10 +21,14 @@
       overflow-x: hidden;
     }
     nav {
-      position: sticky; top: 0;
+      position: sticky;
+      top: 0;
       background: var(--bg);
       padding: 1rem 2rem;
-      display: flex; justify-content: space-between; align-items: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
       border-bottom: 1px solid #333;
       z-index: 10;
     }
@@ -34,14 +38,15 @@
       font-weight: bold;
       text-decoration: none;
     }
-    nav .menu a {
-      margin-left: 1.5rem;
+    .menu-center { display: flex; gap: 1.5rem; }
+    .menu-right { display: flex; }
+    .menu-center a, .menu-right a {
       color: var(--fg);
       text-decoration: none;
       transition: opacity .3s;
+      font-weight: 600;
     }
-    nav .menu a:hover { opacity: .7; }
-
+    .menu-center a:hover, .menu-right a:hover { opacity: .7; }
     .hero {
       text-align: center;
       padding: 100px 20px;
@@ -67,7 +72,6 @@
       background: var(--accent);
       transform: scale(1.05);
     }
-
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
@@ -84,11 +88,9 @@
     }
     .feature h3 {
       font-size: 1.5rem;
-      margin-bottom: .75rem;
+      margin-bottom: 1rem;
     }
-    .feature p { opacity: .8; }
-
-    /* Demo + Instructions Side-by-Side */
+    .feature p { opacity: .8; margin-bottom: 1rem; }
     #demo {
       max-width: 1200px;
       margin: 3rem auto;
@@ -97,7 +99,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
-      align-items: center; /* vertical center */
+      align-items: center;
     }
     #demo .demo-frame {
       flex: 2 1 500px;
@@ -109,10 +111,8 @@
       margin-bottom: 1rem;
     }
     #demo .demo-frame iframe {
-      width: 100%;
-      height: 400px;
-      border: 0;
-      border-radius: 8px;
+      width: 100%; height: 400px;
+      border: 0; border-radius: 8px;
       overflow: hidden;
     }
     #demo .instructions {
@@ -122,35 +122,59 @@
       opacity: .9;
       line-height: 1.5;
     }
-    #demo .instructions ol {
-      list-style-position: inside;
+    #demo .instructions ol { list-style-position: inside; }
+    #demo .instructions li { margin-bottom: .75rem; }
+    .how-it-works {
+      background: var(--muted);
+      text-align: center;
+      padding: 3rem 1rem;
+      margin: 3rem 0;
     }
-    #demo .instructions li {
-      margin-bottom: .75rem;
+    .how-it-works h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .how-it-works ol {
+      counter-reset: step;
+      display: flex;
+      justify-content: center;
+      gap: 6rem;
+      padding: 0; margin: 0;
+      list-style: none;
     }
-
+    .how-it-works li {
+      counter-increment: step;
+      text-align: center;
+      max-width: 200px;
+      font-size: 1.125rem;
+      line-height: 1.5;
+    }
+    .how-it-works li::before {
+      content: counter(step) ".";
+      display: block;
+      font-size: 1.5rem;
+      margin-bottom: .5rem;
+      font-weight: bold;
+    }
+    @media (max-width: 768px) {
+      nav { justify-content: center; }
+      .menu-center, .menu-right {
+        width: 100%; justify-content: center; margin: .5rem 0;
+      }
+      .how-it-works ol { flex-direction: column; gap: 2rem; }
+      #demo { flex-direction: column; }
+    }
     .contact {
       background: var(--muted);
       text-align: center;
       padding: 3rem 1rem;
       margin: 3rem 0;
     }
-    .contact h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .contact p {
-      opacity: .9;
-      margin-bottom: 1.5rem;
-    }
+    .contact h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .contact p { opacity: .9; margin-bottom: 1.5rem; }
     .contact a {
       color: var(--accent);
       font-weight: 600;
       text-decoration: none;
     }
-    .contact a:hover {
-      text-decoration: underline;
-    }
+    .contact a:hover { text-decoration: underline; }
     .contact input {
       padding: .75rem 1rem;
       margin-right: .5rem;
@@ -168,30 +192,26 @@
       border-radius: 24px;
       transition: background .3s;
     }
-    .contact button:hover {
-      background: var(--accent);
-    }
-
+    .contact button:hover { background: var(--accent); }
     footer {
       text-align: center;
       padding: 1.5rem 1rem;
       font-size: .9rem;
       border-top: 1px solid #333;
     }
-    footer a {
-      color: var(--fg);
-      text-decoration: none;
-      margin: 0 .5rem;
-      opacity: .8;
-    }
+    footer a { color: var(--fg); text-decoration: none; margin: 0 .5rem; opacity: .8; }
     footer a:hover { opacity: 1; }
   </style>
 </head>
 <body>
   <nav>
     <a href="#" class="logo">OneTap</a>
-    <div class="menu">
+    <div class="menu-center">
       <a href="#features">Features</a>
+      <a href="#casestudies">Case Studies</a>
+      <a href="#blog">Blog</a>
+    </div>
+    <div class="menu-right">
       <a href="#contact">Join Waitlist</a>
     </div>
   </nav>
@@ -204,12 +224,11 @@
 
   <section id="features" class="features">
     <div class="feature" style="grid-column:1/-1; padding:4rem;">
-      <h3>Features Coming Soon</h3>
+      <h3>Features</h3>
       <p>Stay tuned for Instant Autofill, Unified Dashboard, Secure Checkout, and Cross-Platform support—all in one tap.</p>
     </div>
   </section>
 
-  <!-- Updated Demo Section -->
   <section id="demo">
     <div class="demo-frame">
       <h2>OneTap Demo</h2>
@@ -228,6 +247,15 @@
         <li>Enjoy frictionless, one tap checkout everywhere!</li>
       </ol>
     </div>
+  </section>
+
+  <section id="how-it-works" class="how-it-works">
+    <h2>How It Works</h2>
+    <ol>
+      <li>Add OneTap</li>
+      <li>Store payment & shipping</li>
+      <li>One-tap checkout</li>
+    </ol>
   </section>
 
   <section id="contact" class="contact">
