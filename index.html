@@ -20,6 +20,7 @@
       line-height: 1.6;
       overflow-x: hidden;
     }
+    /* Navigation */
     nav {
       position: sticky;
       top: 0;
@@ -38,8 +39,10 @@
       font-weight: bold;
       text-decoration: none;
     }
-    .menu-center { display: flex; gap: 1.5rem; }
-    .menu-right { display: flex; }
+    .menu-center, .menu-right {
+      display: flex;
+      gap: 1.5rem;
+    }
     .menu-center a, .menu-right a {
       color: var(--fg);
       text-decoration: none;
@@ -47,6 +50,8 @@
       font-weight: 600;
     }
     .menu-center a:hover, .menu-right a:hover { opacity: .7; }
+
+    /* Hero */
     .hero {
       text-align: center;
       padding: 100px 20px;
@@ -72,6 +77,8 @@
       background: var(--accent);
       transform: scale(1.05);
     }
+
+    /* Features */
     .features {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
@@ -91,6 +98,8 @@
       margin-bottom: 1rem;
     }
     .feature p { opacity: .8; margin-bottom: 1rem; }
+
+    /* Demo */
     #demo {
       max-width: 1200px;
       margin: 3rem auto;
@@ -124,6 +133,8 @@
     }
     #demo .instructions ol { list-style-position: inside; }
     #demo .instructions li { margin-bottom: .75rem; }
+
+    /* How It Works */
     .how-it-works {
       background: var(--muted);
       text-align: center;
@@ -153,14 +164,8 @@
       margin-bottom: .5rem;
       font-weight: bold;
     }
-    @media (max-width: 768px) {
-      nav { justify-content: center; }
-      .menu-center, .menu-right {
-        width: 100%; justify-content: center; margin: .5rem 0;
-      }
-      .how-it-works ol { flex-direction: column; gap: 2rem; }
-      #demo { flex-direction: column; }
-    }
+
+    /* Contact */
     .contact {
       background: var(--muted);
       text-align: center;
@@ -175,16 +180,24 @@
       text-decoration: none;
     }
     .contact a:hover { text-decoration: underline; }
+    .contact form {
+      display: flex;
+      gap: .5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
     .contact input {
+      flex: 1 1 250px;
       padding: .75rem 1rem;
-      margin-right: .5rem;
       border: 1px solid #333;
       border-radius: 24px;
       background: var(--bg);
       color: var(--fg);
-      min-width: 280px;
+      min-width: 0;
     }
     .contact button {
+      flex: 0 1 auto;
       background: transparent;
       color: var(--fg);
       border: 2px solid var(--fg);
@@ -193,6 +206,27 @@
       transition: background .3s;
     }
     .contact button:hover { background: var(--accent); }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      /* Nav stacking */
+      nav { flex-direction: column; }
+      .menu-center, .menu-right {
+        width: 100%;
+        justify-content: space-around;
+        margin: .5rem 0;
+      }
+      /* How It Works centering */
+      .how-it-works ol {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+      }
+      /* Demo stacking */
+      #demo { flex-direction: column; }
+    }
+
+    /* Footer */
     footer {
       text-align: center;
       padding: 1.5rem 1rem;
