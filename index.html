@@ -28,13 +28,13 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: var(--nav-height);
       background: var(--bg);
       padding: 1rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
+      overflow-x: auto;
       border-bottom: 1px solid #333;
       z-index: 10;
     }
@@ -219,8 +219,22 @@
 
     /* Responsive Adjustments */
     @media (max-width: 768px) {
-      /* Nav stacking */
-      nav { flex-direction: column; }
+      /* Keep nav row on mobile with horizontal scroll */
+      nav { flex-direction: row; }
+      .menu-center, .menu-right {
+        /* ensure items don't shrink */
+        flex-shrink: 0;
+        justify-content: flex-start;
+      }
+      /* How It Works centering */
+      .how-it-works ol {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+      }
+      /* Demo stacking */
+      #demo { flex-direction: column; }
+    }
       .menu-center, .menu-right {
         width: 100%;
         justify-content: space-around;
