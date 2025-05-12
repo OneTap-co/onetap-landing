@@ -18,7 +18,23 @@
     }
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body { background: var(--bg); color: var(--fg); font-family: var(--font-sans); line-height: 1.6; overflow-x: hidden; }
-    nav { position: fixed; top: 0; left: 0; width: 100%; background: var(--bg); display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; z-index: 1000; }
+    nav {
+      position: fixed;
+      top: 0; left: 0; width: 100%;
+      background: var(--bg);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2rem;
+      z-index: 1000;
+    }
+    .main-cta { /* visible on desktop */ }
+    .nav-cta-mobile { display: none; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .main-cta { display: none; }
+      .nav-cta-mobile { display: block; margin-top: 1rem; }
+      .nav-links.nav-open { display: flex; flex-direction: column; background: var(--bg); position: absolute; top: 60px; left: 0; width: 100%; padding: 1rem 2rem; }
+    }
     nav a.logo { font-family: var(--font-heading); font-weight: 800; color: var(--fg); text-decoration: none; font-size: 1.5rem; }
     .nav-links { display: flex; gap: 1.5rem; }
     .nav-links.nav-open { display: flex; flex-direction: column; background: var(--bg); position: absolute; top: 60px; left: 0; width: 100%; padding: 1rem 2rem; }
@@ -28,7 +44,11 @@
     .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
     .hamburger div { width: 25px; height: 3px; background: var(--fg); }
     @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } }
-    header { padding: 6rem 2rem 4rem; text-align: center; background: var(--muted-bg); }
+    header {
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+      background: var(--muted-bg);
+    }
     header h1 { font-size: 2.5rem; font-family: var(--font-heading); margin-bottom: 1rem; }
     header p.subhead { font-size: 1.25rem; margin-bottom: 2rem; color: #ccc; }
     .hero-form { display: inline-flex; gap: 0.5rem; }
@@ -70,8 +90,9 @@
       <a href="#features">Features</a>
       <a href="case-studies.html">Case Studies</a>
       <a href="blog.html">Blog</a>
+      <a href="#" class="cta-btn nav-cta-mobile">Join Waitlist</a>
     </div>
-    <button class="cta-btn">Join Waitlist</button>
+    <button class="cta-btn main-cta">Join Waitlist</button>
     <div class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('nav-open')">
       <div></div><div></div><div></div>
     </div>
@@ -109,7 +130,7 @@
 
   <section id="demo" class="demo-section">
     <h2>OneTap Demo</h2>
-    <div class="demo-frame" aria-label="Interactive demo placeholder"></div>
+    <iframe class="demo-frame" src="demo.html" aria-label="Interactive demo" frameborder="0"></iframe>
     <div class="demo-instructions">
       <ol>
         <li>Create your profile: enter name, email, phone, payment methods, addresses.</li>
