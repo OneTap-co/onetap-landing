@@ -30,7 +30,6 @@
     nav.nav-open .desktop-links, nav.nav-open .main-cta { display: none; }
     nav.nav-open .mobile-menu { display: flex; }
 
-    /* Mobile menu items styling */
     .mobile-menu a,
     .mobile-menu .nav-back {
       display: block;
@@ -85,7 +84,6 @@
       gap: 0.5rem;
       align-items: center;
       justify-content: center;
-      flex-wrap: nowrap;
       margin: 0 auto;
       max-width: 500px;
     }
@@ -109,7 +107,7 @@
     }
     @media (max-width: 600px) {
       .hero-form { flex-direction: column; width: 100%; max-width: 300px; }
-      .hero-form input, .hero-form button { width: 100%; border-radius: 2rem; }
+      .hero-form input[type="email"], .hero-form button { width: 100%; border-radius: 2rem; }
     }
 
     section { padding: 4rem 2rem; }
@@ -125,7 +123,7 @@
 
     .demo-section {
       display: flex;
-      align-items: center; /* Center instructions vertically with video */
+      align-items: center;
       gap: 2rem;
       flex-wrap: wrap;
       background: var(--muted-bg);
@@ -191,56 +189,22 @@
     <h1>Universal One-Click Checkout & Purchase Management</h1>
     <p class="subhead">End cart abandonment • Manage orders in one place</p>
     <form class="hero-form">
-      <input type="email" name="email" placeholder="you@example.com" aria-label="Email" required />
+      <input type="email" placeholder="you@example.com" required />
       <button class="cta-btn" type="submit">Join Waitlist</button>
     </form>
   </header>
   <section id="features">
     <h2 style="text-align:center; margin-bottom:2rem;">Core Features</h2>
     <div class="features">
-      <div class="feature-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path d="M13 2L3 14h8l-2 8 10-12h-8z" />
-          </svg>
-        </div>
-        <h3>Instant Autofill</h3>
-        <p>Tired of typing? Autofill your payment & shipping details instantly.</p>
-      </div>
-      <div class="feature-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
-            <line x1="12" y1="12" x2="16" y2="8" stroke="currentColor" stroke-width="2" />
-          </svg>
-        </div>
-        <h3>Unified Dashboard</h3>
-        <p>Manage orders, returns, and profiles all in one secure place.</p>
-      </div>
-      <div class="feature-item">
-        <div class="icon">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" />
-            <path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="currentColor" stroke-width="2" />
-          </svg>
-        </div>
-        <h3>Secure Checkout</h3>
-        <p>Bank-grade encryption keeps your data safe on every site.</p>
-      </div>
+      <div class="feature-item"><div class="icon"><svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M13 2L3 14h8l-2 8 10-12h-8z"/></svg></div><h3>Instant Autofill</h3><p>Tired of typing? Autofill your payment & shipping details instantly.</p></div>
+      <div class="feature-item"><div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><line x1="12" y1="12" x2="16" y2="8" stroke="currentColor" stroke-width="2"/></svg></div><h3>Unified Dashboard</h3><p>Manage orders, returns, and profiles all in one secure place.</p></div>
+      <div class="feature-item"><div class="icon"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="5" y="11" width="14" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4" fill="none" stroke="currentColor" stroke-width="2"/></svg></div><h3>Secure Checkout</h3><p>Bank-grade encryption keeps your data safe on every site.</p></div>
     </div>
   </section>
   <section id="demo" class="demo-section">
     <h2>OneTap Demo</h2>
-    <iframe src="https://xk79f5.csb.app" class="demo-frame" allowfullscreen></iframe>
-    <div class="demo-instructions">
-      <ol>
-        <li>Create your profile: enter name, email, phone, payment methods, addresses.</li>
-        <li>Go to any checkout page: click the OneTap button.</li>
-        <li>Select card & address: choose from saved options.</li>
-        <li>Click “Pay with OneTap”: instant processing.</li>
-        <li>Enjoy frictionless, one tap checkout everywhere!</li>
-      </ol>
-    </div>
+    <iframe src="https://codesandbox.io/embed/xk79f5?view=preview&fontsize=14&hidenavigation=1&theme=dark" class="demo-frame" allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; microphone; midi; payment; usb; vr; xr-spatial-tracking" sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts" loading="lazy"></iframe>
+    <div class="demo-instructions"><ol><li>Create your profile: enter name, email, phone, payment methods, addresses.</li><li>Go to any checkout page: click the OneTap button.</li><li>Select card & address: choose from saved options.</li><li>Click “Pay with OneTap.”— Instant processing.</li><li>Enjoy frictionless, one tap checkout everywhere!</li></ol></div>
   </section>
   <section id="testimonials">
     <h2 style="text-align:center; margin-bottom:2rem;">What Early Users Say</h2>
@@ -250,12 +214,8 @@
     </div>
   </section>
   <footer>
-    <div class="footer-links" style="margin-bottom:1rem;">
-      <a href="#demo">Demo</a> | <a href="#testimonials">Testimonials</a> | <a href="faq.html">FAQ</a>
-    </div>
-    <div class="contact-footer" style="margin-bottom:1rem;">
-      <p>Contact us: <a href="mailto:info@theonetap.co">info@theonetap.co</a> | <a href="tel:+12022945626">+1 (202) 294-5626</a></p>
-    </div>
+    <div class="footer-links" style="margin-bottom:1rem;"><a href="#demo">Demo</a> | <a href="#testimonials">Testimonials</a> | <a href="faq.html">FAQ</a></div>
+    <div class="contact-footer" style="margin-bottom:1rem;"><p>Contact us: <a href="mailto:info@theonetap.co">info@theonetap.co</a> | <a href="tel:+12022945626">+1 (202) 294-5626</a></p></div>
     <p>&copy; 2025 OneTap. All rights reserved.</p>
   </footer>
   <script>
